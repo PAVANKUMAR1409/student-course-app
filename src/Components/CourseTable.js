@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../axiosConfig'; // Import the configured Axios instance
 import './StudentTable.css'; // Import the CSS file
 import CourseEditForm from './CourseEditForm'; // Import the EditForm component
+import { Link } from 'react-router-dom';
 
 const CourseTable = React.forwardRef((props, ref) => {
   const [courses, setCourses] = useState([]);
@@ -43,6 +44,7 @@ const CourseTable = React.forwardRef((props, ref) => {
   return (
     <div>
       <h2>Courses</h2>
+      <Link to="/addcourse">AddCourse</Link>
       {editingCourse && 
         <CourseEditForm 
           course={editingCourse} 
@@ -58,6 +60,7 @@ const CourseTable = React.forwardRef((props, ref) => {
             <th>Course Faculty</th>
 	          <th>Course Duration</th>
 	          <th>Course Fee</th>
+            {/* <th>StudentIds</th> */}
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -70,6 +73,7 @@ const CourseTable = React.forwardRef((props, ref) => {
               <td>{course.courseFaculty}</td>
               <td>{course.courseDuration}</td>
               <td>{course.courseFee}</td>
+              {/* <td>{course.studentIds.join(', ')}</td> */}
               <td><button onClick={() => handleEdit(course)}>Edit</button></td>
               <td><button onClick={() => handleDelete(course.courseId)}>Delete</button></td>
             </tr>

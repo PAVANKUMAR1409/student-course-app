@@ -3,6 +3,9 @@ import axios from '../axiosConfig'; // Import the configured Axios instance
 import './StudentTable.css'; // Import the CSS file
 import StudentEditForm from './StudentEditForm'; // Import the EditForm component
 import StudentCourseMappingForm from './StudentCourseMappingForm';
+import { Link } from 'react-router-dom';
+
+
 
 const StudentTable = React.forwardRef((props, ref) => {
   const [students, setStudents] = useState([]);
@@ -48,6 +51,7 @@ const StudentTable = React.forwardRef((props, ref) => {
   return (
     <div>
       <h2>Students</h2>
+      <Link to="/addStudent">AddStudent</Link>
       {editingStudent && 
         <StudentEditForm 
           student={editingStudent} 
@@ -93,6 +97,9 @@ const StudentTable = React.forwardRef((props, ref) => {
           ))}
         </tbody>
       </table>
+      
+       
+      
     </div>
   );
 });
